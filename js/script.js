@@ -45,14 +45,49 @@ frutas.forEach((fruta,indice,frutas) => {
 
 */
 
+
+
 //Recuperando a lista ul que está no HTML o id é lista:
 let lista = document.getElementById('lista');
-//Criando um elemento li e adicionando o texto
-frutas.forEach((fruta)=>{
-    let itemDeLista = document.createElement('li');
-    itemDeLista.textContent = fruta;
-    //Adicionando o item ao elemento ul
-    lista.appendChild(itemDeLista);
+
+//Função de renderização da lista de frutas
+function renderizaLista(){
+    lista.innerHTML = '';
+    //Criando um elemento li e adicionando o texto
+    frutas.forEach((fruta)=>{
+        let itemDeLista = document.createElement('li');
+        itemDeLista.textContent = fruta;
+        //Adicionando o item ao elemento ul
+        lista.appendChild(itemDeLista);
+    });
+}
+//=====================================PUSH() e UNSHIFT()
+document.getElementById('btnAdd').addEventListener('click',()=>{
+    let valorDigitadoNoCampo = document.getElementById('idFruta').value;
+    frutas.push(valorDigitadoNoCampo); //adiciona item ao final do array
+    // frutas.unshift(valorDigitadoNoCampo); //adiciona item no início do array
+    renderizaLista();
 });
 
+//=====================================POP() e SHIFT()
+document.getElementById('btnRemove').addEventListener('click',()=>{
+    frutas.pop(); //remove item do final do array
+   // frutas.shift(); //remove item do início do array
+    renderizaLista();
+    });
 
+ //=====================================SORT() e REVERSE()
+ document.getElementById('btnSort').addEventListener('click',()=>{
+    frutas.sort();
+    renderizaLista();
+ });
+ document.getElementById('btnReverse').addEventListener('click',()=>{
+    frutas.reverse();
+    renderizaLista();
+    });
+
+
+
+
+
+renderizaLista();
