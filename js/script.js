@@ -44,12 +44,52 @@ frutas.forEach((fruta, indice, frutas) =>{
 
 //Recuperando a lista ul que está no HTML o id é lista
 let lista = document.getElementById('lista');
-//Criando um elemento li e adicionando o texto
 
-frutas.forEach((fruta) =>{
-    let itemDeLista = document.createElement('li');
-    itemDeLista.textContent = fruta;
-    //Adicionando o item ao elemento ul
-    lista.appendChild(itemDeLista);
-});
 
+//Função de renderização da lista de frutas - O único trabalho dela é mostrar a lista
+function renderizaLista(){
+    lista.innerHTML = '';
+    frutas.forEach((fruta) =>{
+        //Criando um elemento li e adicionando o texto
+        let itemDeLista = document.createElement('li');
+        itemDeLista.textContent = fruta;
+        //Adicionando o item ao elemento ul
+        lista.appendChild(itemDeLista);
+    });
+}
+
+//=================================================== PUSH() E UNSHIFT()
+
+document.getElementById('btnAdd').addEventListener('click', () =>{
+    let valorDigitadoNoCampo = document.getElementById('idFruta').value;
+    // Adicionando o valor ao final do array
+    // frutas.push(valorDigitadoNoCampo);
+    // Adicionando o valor ao início do array
+    frutas.unshift(valorDigitadoNoCampo);
+    renderizaLista();
+})
+
+//  ==================================================== POP() E SHIFT()
+document.getElementById('btnRemove').addEventListener('click', () =>{
+    // Remove item do inicio do array
+    // frutas.shift();
+    // Remove item do final do array
+    frutas.pop();
+    renderizaLista();
+})
+
+
+// ========================================= SORT() E REVERSE()
+document.getElementById('btnSort').addEventListener('click', () => {
+    frutas.sort();
+    renderizaLista();
+})
+
+document.getElementById('btnReverse').addEventListener('click', () => {
+    frutas.reverse();
+    renderizaLista();
+})
+
+
+
+renderizaLista();
