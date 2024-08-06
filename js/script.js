@@ -41,3 +41,15 @@ frutas.forEach((fruta, indice, frutas) =>{
     });
 
 */
+
+//Recuperando a lista ul que está no HTML o id é lista
+let lista = document.getElementById('lista');
+//Criando um elemento li e adicionando o texto
+
+frutas.forEach((fruta) =>{
+    let itemDeLista = document.createElement('li');
+    itemDeLista.textContent = fruta;
+    //Adicionando o item ao elemento ul
+    lista.appendChild(itemDeLista);
+});
+
