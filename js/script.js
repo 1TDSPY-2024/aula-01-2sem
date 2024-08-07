@@ -32,16 +32,62 @@ frutas_exoticas.forEach((fruta,indice,frutas_exoticas) => {
 
 let lista = document.getElementById('lista');
 
-frutas_exoticas.forEach((fruta) =>{
-    
-    let itemDeLista = document.createElement('li');
-    itemDeLista.textContent = fruta;
 
-    lista.appendChild(itemDeLista);
+renderizaLista();
+/*------------------- push -----------------*/
+function renderizaLista(){
+    lista.innerHTML = '';
+
+    frutas_exoticas.forEach((fruta) =>{
+
+        let itemDeLista = document.createElement('li');
+        itemDeLista.textContent = fruta;
+    
+        lista.appendChild(itemDeLista);
+    });
+    
+}
+
+document.getElementById('btnAdd').addEventListener('click',() =>{
+    let frutaInserida = document.getElementById('idFruta').value;
+    //frutas_exoticas.push(frutaInserida);
+    //ou se quiser inserir no inicio
+    frutas_exoticas.unshift(frutaInserida);
+    renderizaLista();
 });
 
+document.getElementById('btnRemove').addEventListener('click', () =>{
+    frutas_exoticas.shift();
+    // ou se quiser remover o ultimo 
+    // frutas_exoticas.pop();
+    renderizaLista();
+});
+document.getElementById('btnOrd').addEventListener('click', () => {
+    //organiza a lista em ordem alfabetica
+    frutas_exoticas.sort();
+    renderizaLista();
+});
+document.getElementById('btnReverse').addEventListener('click', () => {
+    //reverte a ordem da lista
+    frutas_exoticas.reverse();
+    renderizaLista();
+});
+/*----------------indexof() e splice()------------------ */
 
-
-
-
-
+document.getElementById('btnPesquisa').addEventListener('click', () => {
+    let frutaInserida = document.getElementById('idFruta').value;
+    console.log(frutas_exoticas.indexOf("Jaca"))
+   
+})
+document.getElementById('btnDelete').addEventListener('click', () => {
+    deletaFruta();
+   
+})
+function deletaFruta(){
+    let frutaInserida = document.getElementById('idFruta').value;
+    let indice = frutas.indexOf(frutaInserida);
+    if(indice != -1){
+        frutas_exoticas.splice(indice,1);
+    }
+    renderizaLista();
+}
