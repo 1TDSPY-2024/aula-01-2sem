@@ -1,29 +1,38 @@
+let nomes = [];
 const lista = document.querySelector('#lista');
-let arrayItens = [];
 
 document.querySelector('#btnAdd').addEventListener('click', () => {
     let inputCampo = document.querySelector("#idNome").value;
-    arrayItens.push(inputCampo);
-    exibeLista(arrayItens);
+    nomes.push(inputCampo);
+    exibeLista();
 })
 
 document.querySelector('#btnOrdenar').addEventListener('click', () => {
-    arrayItens.sort();
+    nomes.sort();
     exibeLista();
 })
 
 document.querySelector('#btnReverter').addEventListener('click', () => {
-    arrayItens.reverse();
+    nomes.reverse();
     exibeLista();
 })
 
+document.querySelector('#btnRemover').addEventListener('click', () => {
+    let inputCampo = document.querySelector('#idNome').value;
+    let indiceNaLista = nomes.indexOf(inputCampo);
+
+    if(indiceNaLista != -1){
+        nomes.splice(indiceNaLista, 1);
+    }
+
+    exibeLista();
+})
 
 function exibeLista(){
     lista.innerHTML = ''; // zerando a lista
-    arrayItens.forEach((item) => {
+    nomes.forEach((item) => {
         let itemDeLista = document.createElement('li');
         itemDeLista.textContent = item;
         lista.appendChild(itemDeLista);
     });
 }
-
