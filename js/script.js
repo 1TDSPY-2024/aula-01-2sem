@@ -90,6 +90,24 @@ document.getElementById('btnReverse').addEventListener('click', () => {
     renderizaLista();
 })
 
+// =========================================== INDEXOF() e SPLICE()
+document.getElementById('btnPesquisa').addEventListener('click', () => {
+    let valorDigitadoNoCampo = document.getElementById('idFruta').value;
+
+    // Index da primeira ocorrência de "a" no input
+    console.log(frutas.indexOf("jaca"));
+})
+
+document.getElementById('btnDelete').addEventListener('click', deletaFruta)
+
+function deletaFruta(){
+    let valorDigitadoNoCampo = document.getElementById('idFruta').value;
+    let indice = frutas.indexOf(valorDigitadoNoCampo);
+    if(indice != -1){
+        frutas.splice(indice, 1);
+    }
+    renderizaLista();
+}
 
 
 renderizaLista();
